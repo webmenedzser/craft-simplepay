@@ -25,20 +25,20 @@ use craft\web\twig\variables\CraftVariable;
 use yii\base\Event;
 
 /**
- * Class CraftSimplePay
+ * Class CraftSimplepay
  *
  * @author    Ottó Radics
- * @package   CraftSimplePay
+ * @package   CraftSimplepay
  * @since     1.0.0
  *
  */
-class CraftSimplePay extends Plugin
+class CraftSimplepay extends Plugin
 {
     // Static Properties
     // =========================================================================
 
     /**
-     * @var CraftSimplePay
+     * @var CraftSimplepay
      */
     public static $plugin;
 

@@ -13,7 +13,7 @@ namespace webmenedzser\craftsimplepay\services;
 use webmenedzser\craftsimplepay\helpers\SimplePayHelper;
 use webmenedzser\craftsimplepay\services\simplepay\Sdk\SimplePayBack;
 use webmenedzser\craftsimplepay\services\ResultService;
-use webmenedzser\craftsimplepay\CraftSimplePay;
+use webmenedzser\craftsimplepay\CraftSimplepay;
 
 use Craft;
 use craft\base\Component;
@@ -52,7 +52,7 @@ class BackService extends Component
          * Call SimplePay SDK to process the response
          */
         $simplePayBack = new SimplePayBack([
-            'SANDBOX' => CraftSimplePay::getInstance()->getSettings()->testMode,
+            'SANDBOX' => CraftSimplepay::getInstance()->getSettings()->testMode,
             'merchant' => $gateway->merchant,
             'merchantKey' => $gateway->secretKey
         ]);

@@ -12,7 +12,7 @@ namespace webmenedzser\craftsimplepay\services;
 
 use craft\commerce\elements\Order;
 use craft\helpers\UrlHelper;
-use webmenedzser\craftsimplepay\CraftSimplePay;
+use webmenedzser\craftsimplepay\CraftSimplepay;
 
 use Craft;
 use craft\base\Component;
@@ -37,9 +37,9 @@ class ResultService extends Component
         $this->notification = $notification;
         $this->routes = [
             'SUCCESS' => $this->order->returnUrl,
-            'FAIL' => CraftSimplePay::getInstance()->getSettings()->failUrl,
-            'CANCEL' => CraftSimplePay::getInstance()->getSettings()->cancelUrl,
-            'TIMEOUT' => CraftSimplePay::getInstance()->getSettings()->timeoutUrl
+            'FAIL' => CraftSimplepay::getInstance()->getSettings()->failUrl,
+            'CANCEL' => CraftSimplepay::getInstance()->getSettings()->cancelUrl,
+            'TIMEOUT' => CraftSimplepay::getInstance()->getSettings()->timeoutUrl
         ];
         $this->messages = [
             'SUCCESS' => Craft::t('craft-simplepay', 'Payment successful'),

@@ -10,7 +10,7 @@
 
 /**
  * @author    Ottó Radics
- * @package   SimplePay
+ * @package   CraftSimplepay
  * @since     1.0.0
  */
 return [

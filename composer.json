@@ -42,6 +42,6 @@
         "developerUrl": "https://www.webmenedzser.hu",
         "documentationUrl": "https://github.com/webmenedzser/craft-simplepay/blob/master/README.md",
         "changelogUrl": "https://raw.githubusercontent.com/webmenedzser/craft-simplepay/master/CHANGELOG.md",
-        "class": "webmenedzser\\craftsimplepay\\CraftSimplePay"
+        "class": "webmenedzser\\craftsimplepay\\CraftSimplepay"
     }
 }

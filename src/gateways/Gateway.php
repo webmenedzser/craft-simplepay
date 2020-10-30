@@ -10,7 +10,7 @@
 
 namespace webmenedzser\craftsimplepay\gateways;
 
-use webmenedzser\craftsimplepay\CraftSimplePay;
+use webmenedzser\craftsimplepay\CraftSimplepay;
 use webmenedzser\craftsimplepay\helpers\SimplePayHelper;
 use webmenedzser\craftsimplepay\helpers\TemplateHelper;
 use webmenedzser\craftsimplepay\services\IpnService;
@@ -278,7 +278,7 @@ class Gateway extends OffsiteGateway
 
         $gateway->setMerchant(Craft::parseEnv($this->merchant));
         $gateway->setSecretKey(Craft::parseEnv($this->secretKey));
-        $gateway->setTestMode(CraftSimplePay::getInstance()->getSettings()->testMode);
+        $gateway->setTestMode(CraftSimplepay::getInstance()->getSettings()->testMode);
         $gateway->setOrderRef($orderRef);
         $gateway->setCustomerEmail($cart->customer->email);
         $gateway->setLanguage('HU');

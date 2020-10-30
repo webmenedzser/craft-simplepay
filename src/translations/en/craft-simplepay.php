@@ -10,11 +10,11 @@
 
 /**
  * @author    Ottó Radics
- * @package   SimplePay
+ * @package   CraftSimplepay
  * @since     1.0.0
  */
 return [
-    'CraftSimplePay plugin loaded' => 'CraftSimplePay plugin loaded',
+    'CraftSimplepay plugin loaded' => 'CraftSimplepay plugin loaded',
     "SimplePay customer's guide" => "SimplePay customer's guide",
     'SimplePay - Online bank card payment' => 'SimplePay - Online bank card payment',
     'http://simplepartner.hu/PaymentService/Payment_information.pdf' => 'http://simplepartner.hu/PaymentService/Payment_information.pdf'
