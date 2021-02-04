@@ -30,6 +30,7 @@ class PurchaseRequest extends AbstractRequest
             'orderRef' => $this->getOrderRef(),
             'currency' => $this->getCurrency(),
             'customerEmail' => $this->getCustomerEmail(),
+            'invoice' => $this->getInvoiceData(),
             'language' => $this->getLanguage(),
             'total' => $this->getTotal(),
             'url' => $this->getUrl(),

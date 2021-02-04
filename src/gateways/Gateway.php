@@ -275,12 +275,26 @@ class Gateway extends OffsiteGateway
         }
 
         $orderRef = $cart->number . '-' . random_int(100, 999999);
+        $customer = $cart->getCustomer();
+        $address = $cart->getBillingAddress();
 
         $gateway->setMerchant(Craft::parseEnv($this->merchant));
         $gateway->setSecretKey(Craft::parseEnv($this->secretKey));
         $gateway->setTestMode(CraftSimplepay::getInstance()->getSettings()->testMode);
         $gateway->setOrderRef($orderRef);
-        $gateway->setCustomerEmail($cart->customer->email);
+        $gateway->setCustomerEmail($customer->email);
+        if (SimplePayHelper::shouldSendInvoiceData($address)) {
+            $gateway->setInvoiceData([
+                'name' => $address->fullName ?: ($address->lastName . ' ' . $address->firstName),
+                'country' => $address->countryIso,
+                'state' => $address->stateText,
+                'city' => $address->city,
+                'zip' => $address->zipCode,
+                'address' => $address->address1,
+                'address2' => $address->address2,
+                'company' => $address->businessName
+            ]);
+        }
         $gateway->setLanguage('HU');
         $gateway->setTotal($cart->total);
         $gateway->setUrl(UrlHelper::actionUrl(

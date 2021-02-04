@@ -101,6 +101,24 @@ class Gateway extends AbstractGateway
     /**
      * @return mixed
      */
+    public function getInvoiceData()
+    {
+        return $this->getParameter('invoiceData');
+    }
+
+    /**
+     * @param $value
+     *
+     * @return Gateway
+     */
+    public function setInvoiceData($value)
+    {
+        return $this->setParameter('invoiceData', $value);
+    }
+
+    /**
+     * @return mixed
+     */
     public function getLanguage()
     {
         return $this->getParameter('language');
