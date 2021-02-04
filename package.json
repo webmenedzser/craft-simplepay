@@ -25,12 +25,10 @@
   },
   "scripts": {
     "changelog": "auto-changelog -p",
-    "version": "npm run replace-version && npm run changelog && git add -A",
-    "postversion": "git push && git push --tags",
-    "replace-version": "replace-in-file --configFile ./.replace-in-file.config.js"
+    "version": "npm run changelog && git add -A",
+    "postversion": "git push && git push --tags"
   },
   "devDependencies": {
-    "auto-changelog": "^1.16.4",
-    "replace-in-file": "^4.2.0"
+    "auto-changelog": "^1.16.4"
   }
 }
