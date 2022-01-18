@@ -151,8 +151,8 @@ class Gateway extends OffsiteGateway
          */
         $simplePayIpn = new SimplePayIpn([
             'SANDBOX' => CraftSimplePay::getInstance()->getSettings()->testMode,
-            'merchant' => $gateway->merchant,
-            'merchantKey' => $gateway->secretKey
+            'merchant' => Craft::parseEnv($gateway->merchant),
+            'merchantKey' => Craft::parseEnv($gateway->secretKey)
         ]);
 
         $json = json_encode($request->getBodyParams());

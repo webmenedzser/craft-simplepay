@@ -63,7 +63,6 @@ class SimplePayBack extends SimplePayBase
         $this->request['checkCtrlResult'] = false;
         if ($this->isCheckSignature($this->request['rJson'], $this->request['sRequest'])) {
             $this->request['checkCtrlResult'] = true;
-
         }
 
         //write log

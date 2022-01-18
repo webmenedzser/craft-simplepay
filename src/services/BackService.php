@@ -53,8 +53,8 @@ class BackService extends Component
          */
         $simplePayBack = new SimplePayBack([
             'SANDBOX' => CraftSimplepay::getInstance()->getSettings()->testMode,
-            'merchant' => $gateway->merchant,
-            'merchantKey' => $gateway->secretKey
+            'merchant' => Craft::parseEnv($gateway->merchant),
+            'merchantKey' => Craft::parseEnv($gateway->secretKey)
         ]);
         $simplePayBack->isBackSignatureCheck($r, $s);
 
