@@ -282,7 +282,7 @@ class Gateway extends OffsiteGateway
         $gateway->setSecretKey(Craft::parseEnv($this->secretKey));
         $gateway->setTestMode(CraftSimplepay::getInstance()->getSettings()->testMode);
         $gateway->setOrderRef($orderRef);
-        $gateway->setCustomerEmail($customer->email);
+        $gateway->setCustomerEmail($cart->email);
         if (SimplePayHelper::shouldSendInvoiceData($address)) {
             $gateway->setInvoiceData([
                 'name' => $address->fullName ?: ($address->lastName . ' ' . $address->firstName),
