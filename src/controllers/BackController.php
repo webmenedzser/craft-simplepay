@@ -35,7 +35,7 @@ class BackController extends Controller
      *
      * @var bool
      */
-    protected $allowAnonymous = true;
+    protected array|int|bool $allowAnonymous = true;
 
     /**
      * @return Response

@@ -26,7 +26,7 @@ use craft\commerce\Plugin as Commerce;
  */
 class BackService extends Component
 {
-    public static function redirectUser($request)
+    public static function redirectUser($request) : string
     {
         /**
          * Get parameters from return URL

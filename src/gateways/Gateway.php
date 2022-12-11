@@ -79,7 +79,7 @@ class Gateway extends OffsiteGateway
     /**
      * @inheritdoc
      */
-    public function getSettingsHtml()
+    public function getSettingsHtml(): ?string
     {
         return Craft::$app
             ->getView()
@@ -104,7 +104,7 @@ class Gateway extends OffsiteGateway
         ];
     }
 
-    public function getPaymentFormHtml(array $params)
+    public function getPaymentFormHtml(array $params): ?string
     {
         $imageUrl = TemplateHelper::getHorizontalLogoUrl();
         $alt = Craft::t('craft-simplepay', "SimplePay customer's guide");
@@ -249,7 +249,7 @@ class Gateway extends OffsiteGateway
         return $response;
     }
 
-    public function getTransactionHashFromWebhook()
+    public function getTransactionHashFromWebhook(): null|string
     {
         $orderRef = Craft::$app->getRequest()->getBodyParam('orderRef');
         $order = SimplePayHelper::getOrderByOrderRef($orderRef);
@@ -307,7 +307,7 @@ class Gateway extends OffsiteGateway
     /**
      * @inheritdoc
      */
-    protected function getGatewayClassName()
+    protected function getGatewayClassName(): null|string
     {
         return '\\'.OmnipayGateway::class;
     }

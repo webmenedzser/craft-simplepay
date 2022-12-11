@@ -25,7 +25,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "craftcms/commerce-omnipay": "^3.0.0",
+        "craftcms/commerce-omnipay": "^4.0.0",
         "league/omnipay": "^3.0.0"
     },
     "autoload": {

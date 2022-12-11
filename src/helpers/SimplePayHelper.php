@@ -30,7 +30,7 @@ class SimplePayHelper extends Component
      * @return Order
      * @throws \Exception
      */
-    public static function getOrderByOrderRef(string $orderRef)
+    public static function getOrderByOrderRef(string $orderRef) : Order
     {
         /**
          * Random string is appended to order nr. before redirecting to offsite

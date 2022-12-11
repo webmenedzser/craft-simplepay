@@ -52,7 +52,7 @@ class ResultService extends Component
         $this->setFlash();
     }
 
-    public function getRedirectUrl()
+    public function getRedirectUrl() : string
     {
         $returnUrl = $this->routes[$this->notification['e']];
         $transactionId = $this->notification['t'] ?? '';
@@ -65,19 +65,19 @@ class ResultService extends Component
         return $this->messages[$this->notification['e']];
     }
 
-    public function setFlash()
+    public function setFlash() : void
     {
         $error = !($this->isSuccessful()) ? 'error' : 'notice';
 
         Craft::$app->session->setFlash($error, $this->getMessage());
     }
 
-    public function isSuccessful()
+    public function isSuccessful() : bool
     {
         return $this->notification['e'] === 'SUCCESS';
     }
 
-    public function checkOrderPaid()
+    public function checkOrderPaid() : void
     {
         if ($this->isSuccessful()) {
             $this->order->markAsComplete();

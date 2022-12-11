@@ -48,12 +48,12 @@ class CraftSimplepay extends Plugin
     /**
      * @var string
      */
-    public $schemaVersion = '1.0.1';
+    public string $schemaVersion = '1.0.1';
 
     /**
      * @var bool
      */
-    public $hasCpSettings = true;
+    public bool $hasCpSettings = true;
 
     // Public Methods
     // =========================================================================
@@ -66,7 +66,6 @@ class CraftSimplepay extends Plugin
         parent::init();
         self::$plugin = $this;
 
-        $this->_registerLogger();
         $this->_registerGateway();
         $this->_registerTemplateHelper();
 
@@ -107,24 +106,9 @@ class CraftSimplepay extends Plugin
     // =========================================================================
 
     /**
-     * Register logger for this plugin
-     */
-    private function _registerLogger()
-    {
-        // Create a new file target
-        $fileTarget = new \craft\log\FileTarget([
-            'logFile' => '@storage/logs/simplepay.log',
-            'categories' => ['webmenedzser\craftsimplepay\*']
-        ]);
-
-        // Add the new target file target to the dispatcher
-        Craft::getLogger()->dispatcher->targets[] = $fileTarget;
-    }
-
-    /**
      * Register payment gateway in Craft Commerce
      */
-    private function _registerGateway()
+    private function _registerGateway() : void
     {
         Event::on(
             Gateways::class,
@@ -135,7 +119,7 @@ class CraftSimplepay extends Plugin
         );
     }
 
-    private function _registerTemplateHelper()
+    private function _registerTemplateHelper() : void
     {
         Event::on(
             CraftVariable::class,

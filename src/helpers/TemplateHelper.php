@@ -20,22 +20,22 @@ use craft\base\Component;
  */
 class TemplateHelper extends Component
 {
-    public static function getHorizontalLogoUrl()
+    public static function getHorizontalLogoUrl() : bool|string
     {
         return Craft::$app->assetManager->getPublishedUrl('@webmenedzser/craftsimplepay/assets/icon-horizontal.png', true);
     }
 
-    public static function getVerticalLogoUrl()
+    public static function getVerticalLogoUrl() : bool|string
     {
         return Craft::$app->assetManager->getPublishedUrl('@webmenedzser/craftsimplepay/assets/icon-vertical.png', true);
     }
 
-    public static function getHorizontalVectorLogoUrl()
+    public static function getHorizontalVectorLogoUrl() : bool|string
     {
         return Craft::$app->assetManager->getPublishedUrl('@webmenedzser/craftsimplepay/assets/icon-horizontal.svg', true);
     }
 
-    public static function getVerticalVectorLogoUrl()
+    public static function getVerticalVectorLogoUrl() : bool|string
     {
         return Craft::$app->assetManager->getPublishedUrl('@webmenedzser/craftsimplepay/assets/icon-vertical.svg', true);
     }
