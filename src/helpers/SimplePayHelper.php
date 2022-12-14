@@ -12,7 +12,7 @@ namespace webmenedzser\craftsimplepay\helpers;
 
 use craft\base\Component;
 use craft\commerce\elements\Order;
-use craft\commerce\models\Address;
+use craft\elements\Address;
 use craft\commerce\Plugin as Commerce;
 
 /**
@@ -65,12 +65,11 @@ class SimplePayHelper extends Component
     public static function shouldSendInvoiceData(Address $address) : bool
     {
         /**
-         * If fullName is missing, check for firstName and lastName separately.
-         * If both firstName and lastName are missing, fail.
+         * If fullName is missing, stop processing.
          *
          * Prevents error 5309.
          */
-        if (!$address->fullName && !($address->firstName || $address->lastName)) {
+        if (!$address->fullName) {
             return false;
         }
 
@@ -81,28 +80,28 @@ class SimplePayHelper extends Component
          * API change, e.g.: SimplePay decides country is required without notifying us
          * first, prevent sending invoice data.
          */
-        if (!$address->countryIso) {
+        if (!$address->countryCode) {
             return false;
         }
 
         /**
          * Prevents error 5310.
          */
-        if (!$address->city) {
+        if (!$address->locality) {
             return false;
         }
 
         /**
          * Prevents error 5311.
          */
-        if (!$address->zipCode) {
+        if (!$address->postalCode) {
             return false;
         }
 
         /**
          * Prevents error 5312.
          */
-        if (!$address->address1) {
+        if (!$address->addressLine1) {
             return false;
         }
 

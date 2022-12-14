@@ -229,26 +229,30 @@ class SimplePayBase
      */
     public function checkOrSetToJson($data = '')
     {
-        $json = '[]';
-        //empty
+        $json = null;
+        $result = null;
         if ($data === '') {
-            $json =  json_encode([]);
+            $json = json_encode([]);
         }
-        //array
-        if (is_array($data)) {
-            $json =  json_encode($data);
+
+        if (is_array($data) || is_object($data)) {
+            $json = json_encode($data);
         }
-        //object
-        if (is_object($data)) {
-            $json =  json_encode($data);
+
+        if (is_string($data)) {
+            $result = @json_decode($data);
         }
+
         //json
-        $result = @json_decode($data);
         if ($result !== null) {
-            $json =  $data;
+            $json = $data;
         }
+        
         //serialized
-        $result = @unserialize($data);
+        if (is_string($data)) {
+            $result = @unserialize($data);
+        }
+            
         if ($result !== false) {
             $json =  json_encode($result);
         }

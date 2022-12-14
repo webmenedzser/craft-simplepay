@@ -286,13 +286,13 @@ class Gateway extends OffsiteGateway
         if (SimplePayHelper::shouldSendInvoiceData($address)) {
             $gateway->setInvoiceData([
                 'name' => $address->fullName ?: ($address->lastName . ' ' . $address->firstName),
-                'country' => $address->countryIso,
-                'state' => $address->stateText,
-                'city' => $address->city,
-                'zip' => $address->zipCode,
-                'address' => $address->address1,
-                'address2' => $address->address2,
-                'company' => $address->businessName
+                'country' => $address->countryCode,
+                'state' => $address->administrativeArea,
+                'city' => $address->locality,
+                'zip' => $address->postalCode,
+                'address' => $address->addressLine1,
+                'address2' => $address->addressLine2,
+                'company' => $address->organization
             ]);
         }
         $gateway->setLanguage('HU');
