@@ -176,7 +176,7 @@ class Gateway extends OffsiteGateway
 
         $transactionHash = $this->getTransactionHashFromWebhook();
         if (!$transactionHash) {
-            $response->data = "No transactionHash passed.";
+            $response->data = "No matching transaction found.";
 
             return $response;
         }
@@ -251,10 +251,36 @@ class Gateway extends OffsiteGateway
 
     public function getTransactionHashFromWebhook()
     {
-        $orderRef = Craft::$app->getRequest()->getBodyParam('orderRef');
-        $order = SimplePayHelper::getOrderByOrderRef($orderRef);
+        $request = Craft::$app->getRequest();
+        $orderRef = (string) $request->getBodyParam('orderRef');
+        $transactionId = (string) $request->getBodyParam('transactionId');
 
-        return $order->getLastTransaction()->hash;
+        if (!$orderRef || !$transactionId) {
+            return null;
+        }
+
+        $order = SimplePayHelper::getOrderByOrderRef($orderRef);
+        $transactions = Commerce::getInstance()
+            ->getTransactions()
+            ->getAllTopLevelTransactionsByOrderId($order->id);
+
+        foreach ($transactions as $transaction) {
+            if (!$transaction->response) {
+                continue;
+            }
+
+            $response = json_decode($transaction->response, true);
+            if (!is_array($response)) {
+                continue;
+            }
+
+            if ((string)($response['orderRef'] ?? '') === $orderRef &&
+                (string)($response['transactionId'] ?? '') === $transactionId) {
+                return $transaction->hash;
+            }
+        }
+
+        return null;
     }
 
     // Protected Methods
